@@ -12,6 +12,8 @@ import AddCourse from './pages/educator/AddCourse'
 import MyCourses from './pages/educator/MyCourses'
 import StudentsEnrolled from './pages/educator/StudentsEnrolled'
 import Navbar from './components/student/Navbar'
+import Roadmaps from './pages/student/Roadmaps'
+import RoadmapViewer from './pages/student/RoadMapViewer'
 
 
 const App = () => {
@@ -29,6 +31,8 @@ const App = () => {
         <Route path='/my-enrollments' element={<MyEnrollments />}/>
         <Route path='/player/:courseId' element={<Player />}/>
         <Route path='/loading/:path' element={<Loading />}/>
+        <Route path='/learning-path' element={<Roadmaps />}/>
+        <Route path="/learning-path/:slug" element={<RoadmapViewer />} />
 
         {/* Educator Routes */}
         <Route path='/educator' element={<Educator />}>

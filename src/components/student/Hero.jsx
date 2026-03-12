@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const Hero = () => {
   return (
-    <div className='relative flex flex-col items-center justify-center w-full pt-36 px-7 space-y-7 text-center overflow-hidden'>
+    <div className='relative flex flex-col items-center justify-center w-full pt-36 px-7 space-y-7 text-center overflow-hidden border-b-2 border-gray-500'>
 
       {/* Background image */}
       <img
@@ -26,7 +26,7 @@ const Hero = () => {
 
         {/* Browse Courses Button */}
         <Link to="/course-list">
-        <button className='mt-4 bg-blue-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-blue-700 transition'>
+        <button className='cursor-pointer mt-4 bg-blue-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-blue-700 transition'>
           Browse Courses
         </button>
         </Link>
