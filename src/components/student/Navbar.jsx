@@ -3,6 +3,7 @@ import customLogo from "../../assets/main/Logo1.png";
 import { Link } from 'react-router-dom'
 import { useClerk, UserButton, useUser } from '@clerk/react';
 import { AppContext } from '../../context/AppContext';
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
 
@@ -15,6 +16,8 @@ const Navbar = () => {
     <div className='flex items-center justify-between px-4 sm:px-10 md:px-14 lg:px-36 border-b-2 border-gray-500 py-4 bg-[#a9d6e5]'>
       
       <img onClick={()=> navigate('/')} src={customLogo} alt="Logo" className='w-28 lg:w-32 cursor-pointer' />
+
+      <SearchBar/>
 
       <div className='hidden md:flex items-center gap-5 text-gray-500'>
         
