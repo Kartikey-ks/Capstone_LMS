@@ -8,9 +8,8 @@ const LearningPathCard = ({ roadmap }) => {
       onClick={() => scrollTo(0, 0)}
       className="border rounded-lg overflow-hidden shadow-sm w-full max-w-sm bg-white hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
     >
-      <div className="h-36 bg-gray-100 flex items-center justify-center">
-        <img src={roadmap.hero} className='' />
-        <span className="text-gray-700 font-semibold">{roadmap.title}</span>
+      <div className="h-46 flex items-center justify-center overflow-hidden">
+        <img src={roadmap.hero} className='h-full w-full object-contain' alt={roadmap.title} />
       </div>
 
       <div className="p-4">
