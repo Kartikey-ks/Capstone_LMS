@@ -1,5 +1,4 @@
 import logo from './logo.svg'
-import logo_dark from './logo_dark.svg'
 import search_icon from './search_icon.svg'
 import cross_icon from './cross_icon.svg'
 import upload_area from './upload_area.svg'
@@ -44,6 +43,8 @@ import profile_img3 from './profile_img3.png'
 import lesson_icon from './lesson_icon.svg'
 
 //others
+import logo_light from '../main/Logo_Light.png'
+import logo_dark from '../main/logo_dark.png'
 import Feature1 from '../main/Feature1.jpg'
 import Feature2 from '../main/Feature2.jpg'
 import Feature3 from '../main/Feature3.jpg'
@@ -72,7 +73,6 @@ export const assets = {
     dropdown_icon,
     cross_icon,
     upload_area,
-    logo_dark,
     down_arrow_icon,
     time_left_clock_icon,
     time_clock_icon,
@@ -96,6 +96,8 @@ export const assets = {
     blue_tick_icon,
     lesson_icon,
     // others
+    logo_light,
+    logo_dark,
     Feature1,
     Feature2,
     Feature3,

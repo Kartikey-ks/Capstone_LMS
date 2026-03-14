@@ -16,7 +16,7 @@ const LearningPath = ({ featuredCount = 3 }) => {
           </div>
 
           <Link
-            to="/learning-path"
+            to="/roadmap"
             className="text-sm px-4 py-2 border rounded-lg hover:bg-gray-800 hover:text-white transition"
             onClick={() => scrollTo(0, 0)}
           >

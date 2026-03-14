@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const LearningPathCard = ({ roadmap }) => {
   return (
     <Link
-      to={`/learning-path/${roadmap.slug}`}
+      to={`/roadmap/${roadmap.slug}`}
       onClick={() => scrollTo(0, 0)}
       className="border rounded-lg overflow-hidden shadow-sm w-full max-w-sm bg-white hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
     >
