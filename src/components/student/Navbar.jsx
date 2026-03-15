@@ -13,7 +13,7 @@ const Navbar = () => {
 
 
   return (
-    <div className='flex items-center justify-between px-4 sm:px-10 md:px-14 lg:px-36 border-b-2 border-gray-500 py-4 bg-[#a9d6e5]'>
+    <div className='sticky top-0 z-50 flex items-center justify-between px-4 sm:px-10 md:px-14 lg:px-36 border-b-2 border-gray-500 py-4 bg-[#a9d6e5]'>
       
       <img onClick={()=> navigate('/')} src={assets.logo_light} alt="Logo" className='w-28 lg:w-32 cursor-pointer' />
 

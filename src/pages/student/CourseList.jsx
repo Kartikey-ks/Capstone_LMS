@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { AppContext } from '../../context/AppContext'
 import SearchBar from '../../components/student/SearchBar.jsx'
 import CourseCard from '../../components/student/CourseCard'
+import { assets } from '../../assets/assets/assets.js'
 
 const CourseList = () => {
 
@@ -33,19 +34,17 @@ const CourseList = () => {
           <div>
             <h1 className='text-4xl font-semibold text-gray-800'>Course List</h1>
 
-            <p className='text-gray-500'>
+            <p className='flex items-center text-gray-500 gap-4'>
               <span
                 className='text-blue-600 cursor-pointer'
                 onClick={()=> navigate('/')}
               >
                 Home
               </span>
-
+              <img src={assets.arrow_icon} />
               <span>Course List</span>
             </p>
           </div>
-
-          <SearchBar data={input}/>
 
         </div>
 
