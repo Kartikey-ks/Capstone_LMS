@@ -23,7 +23,7 @@ const Navbar = () => {
         
         <div className='flex items-center gap-5'>
         {user && <>
-          <button onClick={()=> navigate('/educator')} className='cursor-pointer'>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
+          <button onClick={()=> navigate('/educator')} className='px-4 py-1.5 rounded-full bg-[#333] text-sm font-medium text-white cursor-pointer'>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
         <Link to='/my-enrollments'>My Enrollments</Link>
         </>
         }
