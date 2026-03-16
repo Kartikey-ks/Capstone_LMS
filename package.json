@@ -24,6 +24,7 @@
     "react-toastify": "^11.0.5",
     "react-youtube": "^10.1.0",
     "tailwindcss": "^4.2.1",
+    "toastify": "^2.0.1",
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
