@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react';
 import Footer from '../../components/student/Footer';
 import { assets, dummyCourses, dummyEducatorData } from '../../assets/assets/assets';
