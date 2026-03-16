@@ -167,7 +167,7 @@ export const dummyCourses = [
     {
         "_id": "605c72efb3f1c2b1f8e4e1a1",
         "courseTitle": "Introduction to JavaScript",
-        "courseDescription": "<h2>Learn the Basics of JavaScript</h2><p>JavaScript is a versatile programming language that powers the web. In this course, you will learn the fundamentals of JavaScript, including syntax, data types, and control structures.</p><p>This course is perfect for beginners who want to start their journey in web development. By the end of this course, you will be able to create interactive web pages and understand the core concepts of JavaScript.</p><ul><li>Understand the basics of programming</li><li>Learn how to manipulate the DOM</li><li>Create dynamic web applications</li></ul>",
+        "courseDescription": "This course introduces the fundamentals of JavaScript, the programming language that powers modern websites. You will learn core concepts such as variables, functions, loops, and basic problem solving. By the end of the course you will be able to write simple scripts, manipulate web page elements, and build interactive features for websites. It is designed for beginners who want to start their journey in web development.",
         "coursePrice": 49.99,
         "isPublished": true,
         "discount": 20,
@@ -240,7 +240,7 @@ export const dummyCourses = [
     {
         "_id": "675ac1512100b91a6d9b8b24",
         "courseTitle": "Advanced Python Programming",
-        "courseDescription": "<h2>Deep Dive into Python Programming</h2><p>This course is designed for those who have a basic understanding of Python and want to take their skills to the next level. You will explore advanced topics such as decorators, generators, and context managers.</p><p>By the end of this course, you will be able to write efficient and clean Python code, and understand how to leverage Python's powerful features for real-world applications.</p><ul><li>Master advanced data structures</li><li>Implement object-oriented programming concepts</li><li>Work with libraries and frameworks</li></ul>",
+        "courseDescription": "This course is designed for learners who already understand basic Python and want to explore more advanced programming concepts. You will learn about efficient data structures, object oriented programming, and techniques that help write cleaner and more powerful Python code. By the end of the course you will be comfortable building larger applications and solving complex programming problems using Python.",
         "coursePrice": 79.99,
         "isPublished": true,
         "discount": 15,
@@ -312,7 +312,7 @@ export const dummyCourses = [
     {
         "_id": "605c72efb3f1c2b1f8e4e1ae",
         "courseTitle": "Cybersecurity Basics",
-        "courseDescription": "<h2>Protect Systems and Networks</h2><p>Cybersecurity is critical in today's digital age. This course introduces the fundamentals of cybersecurity, including threat analysis, ethical hacking, and secure programming practices.</p><p>By the end of this course, you will understand how to identify vulnerabilities and implement security measures effectively.</p><ul><li>Understand security protocols</li><li>Learn about encryption techniques</li><li>Conduct basic penetration testing</li></ul>",
+        "courseDescription": "This course introduces the essential concepts of cybersecurity and how digital systems can be protected from common threats. You will learn about different types of cyber attacks, security best practices, and how to identify vulnerabilities in systems and networks. The course is ideal for beginners who want to understand how cybersecurity works and why it is important in the modern digital world.",
         "coursePrice": 69.99,
         "isPublished": true,
         "discount": 15,
@@ -378,7 +378,7 @@ export const dummyCourses = [
     {
         "_id": "605c72efb3f1c2b1f8e4e1a7",
         "courseTitle": "Web Development Bootcamp",
-        "courseDescription": "<h2>Become a Full-Stack Web Developer</h2><p>This comprehensive bootcamp covers everything you need to know to become a full-stack web developer. From HTML and CSS to JavaScript and backend technologies, this course is designed to take you from beginner to job-ready.</p><p>Throughout the course, you will work on real-world projects, build a portfolio, and gain the skills necessary to succeed in the tech industry.</p><ul><li>Learn front-end and back-end development</li><li>Build responsive and dynamic web applications</li><li>Understand databases and server-side programming</li></ul>",
+        "courseDescription": "This comprehensive bootcamp teaches the skills needed to build modern websites and web applications. You will learn how the web works, starting with HTML and CSS for structure and design, followed by JavaScript for interactivity. Throughout the course you will work on practical projects that help you build real applications and develop the confidence needed to continue learning full stack development.",
         "coursePrice": 99.99,
         "isPublished": true,
         "discount": 25,
@@ -444,7 +444,7 @@ export const dummyCourses = [
     {
         "_id": "605c72efb3f1c2b1f8e4e1ac",
         "courseTitle": "Cloud Computing Essentials",
-        "courseDescription": "<h2>Master Cloud Fundamentals</h2><p>Learn the foundations of cloud computing and explore popular cloud platforms like AWS, Azure, and Google Cloud. This course is ideal for IT professionals and developers looking to transition to cloud-based solutions.</p><p>By the end of this course, you will understand cloud services, deployment models, and best practices for using cloud resources efficiently.</p><ul><li>Understand cloud architecture</li><li>Learn to work with AWS, Azure, and GCP</li><li>Explore serverless computing and storage solutions</li></ul>",
+        "courseDescription": "This course explains the fundamental ideas behind cloud computing and how businesses use cloud platforms to run applications and store data. You will explore important concepts such as cloud infrastructure, service models, and deployment strategies. The course also introduces major platforms like AWS, Azure, and Google Cloud so you can understand how modern cloud systems operate.",
         "coursePrice": 69.99,
         "isPublished": true,
         "discount": 20,
@@ -509,7 +509,7 @@ export const dummyCourses = [
     {
         "_id": "605c72efb3f1c2b1f8e4e1ad",
         "courseTitle": "Data Science with Python",
-        "courseDescription": "<h2>Start Your Data Science Journey</h2><p>Data Science is one of the most in-demand fields in the world. This course teaches you the essentials of data analysis, visualization, and machine learning using Python. Learn libraries like Pandas, NumPy, Matplotlib, and Scikit-learn.</p><p>By the end of this course, you will be equipped to work on real-world data projects and gain insights from data.</p><ul><li>Data cleaning and preprocessing</li><li>Exploratory Data Analysis (EDA)</li><li>Build predictive models</li></ul>",
+        "courseDescription": "This course introduces the key concepts of data science using Python. You will learn how to work with data, clean datasets, perform analysis, and create visualizations that help understand patterns and insights. Popular libraries such as NumPy, Pandas, and Matplotlib will be used to demonstrate real world data workflows. By the end of the course you will be able to analyze datasets and communicate meaningful results.",
         "coursePrice": 89.99,
         "isPublished": true,
         "discount": 20,
@@ -582,7 +582,7 @@ export const dummyCourses = [
     {
         "_id": "605c72efb3f1c2b1f8e4e1aa",
         "courseTitle": "Data Science and Machine Learning",
-        "courseDescription": "<h2>Unlock the Power of Data</h2><p>This course provides a comprehensive introduction to data science and machine learning. You will learn how to analyze data, build predictive models, and apply machine learning algorithms to real-world problems.</p><p>By the end of this course, you will have a solid understanding of data manipulation, visualization, and machine learning techniques, enabling you to make data-driven decisions.</p><ul><li>Understand data analysis and visualization</li><li>Learn machine learning algorithms and their applications</li><li>Work with popular data science libraries like Pandas and Scikit-Learn</li></ul>",
+        "courseDescription": "This course provides a beginner friendly introduction to both data science and machine learning. You will learn how data can be analyzed to discover patterns and how machine learning algorithms can be used to make predictions. The course focuses on practical understanding of data analysis, model building, and evaluation so you can start solving real world problems using data.",
         "coursePrice": 89.99,
         "isPublished": true,
         "discount": 30,
@@ -647,7 +647,7 @@ export const dummyCourses = [
     {
         "_id": "605c72efb3f1c2b1f8e4e1ab",
         "courseTitle": "Introduction to Cybersecurity",
-        "courseDescription": "<h2>Protect the Digital World</h2><p>This course covers the essentials of cybersecurity, including understanding threats, vulnerabilities, and how to secure systems against cyber-attacks. Ideal for beginners, this course will prepare you for a career in cybersecurity.</p><p>By the end of this course, you will be able to identify and mitigate risks, implement security best practices, and understand the fundamentals of encryption and network security.</p><ul><li>Understand common cybersecurity threats</li><li>Learn about encryption and secure communication</li><li>Explore tools for penetration testing</li></ul>",
+        "courseDescription": "This course covers the foundational ideas of cybersecurity and teaches how digital systems can be protected from threats. You will explore common vulnerabilities, learn how hackers exploit weaknesses, and understand the tools and techniques used to secure networks and systems. It is a great starting point for anyone interested in learning how security works in modern technology.",
         "coursePrice": 59.99,
         "isPublished": true,
         "discount": 15,
