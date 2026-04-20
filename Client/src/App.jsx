@@ -14,6 +14,8 @@ import StudentsEnrolled from './pages/educator/StudentsEnrolled'
 import Navbar from './components/student/Navbar'
 import Roadmaps from './pages/student/Roadmaps'
 import RoadmapViewer from './pages/student/RoadMapViewer'
+import { ToastContainer } from 'react-toastify';
+
 
 
 const App = () => {
@@ -21,6 +23,7 @@ const App = () => {
   const isEducatorRoute = useMatch('/educator/*')
   return (
     <div className='text-default min-h-screen bg-white'>
+      <ToastContainer />
       {!isEducatorRoute && <Navbar />}
       <Routes>
         {/* Student Routes */}

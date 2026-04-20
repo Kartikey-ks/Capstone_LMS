@@ -9,7 +9,7 @@ export const updateRoleToEducator = async (req, res) => {
 
     try {
 
-        const userId = req.auth.userId
+        const userId = req.auth().userId
 
         await clerkClient.users.updateUserMetadata(userId, {
             publicMetadata: {
@@ -25,7 +25,7 @@ export const updateRoleToEducator = async (req, res) => {
 
 }
 
-// // Add New Course
+// Add New Course
 export const addCourse = async (req, res) => {
 
     try {
@@ -34,7 +34,7 @@ export const addCourse = async (req, res) => {
 
         const imageFile = req.file
 
-        const educatorId = req.auth.userId
+        const educatorId = req.auth().userId
 
         if (!imageFile) {
             return res.json({ success: false, message: 'Thumbnail Not Attached' })
@@ -61,11 +61,11 @@ export const addCourse = async (req, res) => {
     }
 }
 
-// // Get Educator Courses
+// Get Educator Courses
 export const getEducatorCourses = async (req, res) => {
     try {
 
-        const educator = req.auth.userId
+        const educator = req.auth().userId
 
         const courses = await Course.find({ educator })
 
@@ -76,10 +76,10 @@ export const getEducatorCourses = async (req, res) => {
     }
 }
 
-// // Get Educator Dashboard Data ( Total Earning, Enrolled Students, No. of Courses)
+// Get Educator Dashboard Data ( Total Earning, Enrolled Students, No. of Courses)
 export const educatorDashboardData = async (req, res) => {
     try {
-        const educator = req.auth.userId;
+        const educator = req.auth().userId;
 
         const courses = await Course.find({ educator });
 
@@ -123,10 +123,10 @@ export const educatorDashboardData = async (req, res) => {
     }
 };
 
-// // Get Enrolled Students Data with Purchase Data
+// Get Enrolled Students Data with Purchase Data
 export const getEnrolledStudentsData = async (req, res) => {
     try {
-        const educator = req.auth.userId;
+        const educator = req.auth().userId;
 
         // Fetch all courses created by the educator
         const courses = await Course.find({ educator });

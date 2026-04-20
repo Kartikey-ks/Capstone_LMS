@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { dummyCourses } from '../../assets/assets/assets'
 import { AppContext } from '../../context/AppContext';
-// import axios from 'axios';
-// import { toast } from 'react-toastify';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import Loading from '../../components/student/Loading';
 
 const MyCourses = () => {
@@ -11,26 +10,25 @@ const MyCourses = () => {
 
   const [courses, setCourses] = useState(null)
 
-  // const fetchEducatorCourses = async () => {
+  const fetchEducatorCourses = async () => {
 
-  //   try {
+    try {
 
-  //     const token = await getToken()
+      const token = await getToken()
 
-  //     const { data } = await axios.get(backendUrl + '/api/educator/courses', { headers: { Authorization: `Bearer ${token}` } })
+      const { data } = await axios.get(backendUrl + '/api/educator/courses', { headers: { Authorization: `Bearer ${token}` } })
 
-  //     data.success && setCourses(data.courses)
+      data.success && setCourses(data.courses)
 
-  //   } catch (error) {
-  //     toast.error(error.message)
-  //   }
+    } catch (error) {
+      toast.error(error.message)
+    }
 
-  // }
+  }
 
   useEffect(() => {
     if (isEducator) {
-      // fetchEducatorCourses()
-        setCourses(dummyCourses)
+      fetchEducatorCourses()
     }
   }, [isEducator])
 

@@ -1,15 +1,48 @@
 import React, { useContext } from 'react'
 import { assets } from "../../assets/assets/assets.js";
 import { Link } from 'react-router-dom'
-import { useClerk, UserButton, useUser } from '@clerk/react';
+import { useClerk, UserButton, useUser, useAuth } from '@clerk/react';
 import { AppContext } from '../../context/AppContext';
 import SearchBar from './SearchBar';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const Navbar = () => {
 
   const {openSignIn} = useClerk()
   const {user} = useUser()
-  const {navigate, isEducator} = useContext(AppContext)
+  const {navigate, isEducator, backendUrl, setIsEducator} = useContext(AppContext)
+  const { getToken } = useAuth()
+
+  const becomeEducator = async () => {
+  try {
+    if (isEducator) {
+      navigate('/educator');
+      return;
+    }
+
+    const token = await getToken();
+
+    const { data } = await axios.get(
+      backendUrl + '/api/educator/update-role',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (data.success) {
+      setIsEducator(true);
+      toast.success(data.message);
+    } else {
+      toast.error(data.message);
+    }
+
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
 
   return (
@@ -23,7 +56,7 @@ const Navbar = () => {
         
         <div className='flex items-center gap-5'>
         {user && <>
-          <button onClick={()=> navigate('/educator')} className='px-4 py-1.5 rounded-full bg-[#333] text-sm font-medium text-white cursor-pointer'>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
+          <button onClick={becomeEducator} className='px-4 py-1.5 rounded-full bg-[#333] text-sm font-medium text-white cursor-pointer'>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
         <Link to='/my-enrollments'>My Enrollments</Link>
         </>
         }

@@ -1,13 +1,13 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import Footer from '../../components/student/Footer';
-import { assets, dummyCourses, dummyEducatorData } from '../../assets/assets/assets';
+import { assets } from '../../assets/assets/assets';
 import { useParams } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import { toast } from 'react-toastify';
 import humanizeDuration from 'humanize-duration';
 import YouTube from 'react-youtube';
 import Loading from '../../components/student/Loading';
+import axios from 'axios';
 
 const CourseDetails = () => {
 
@@ -21,60 +21,82 @@ const CourseDetails = () => {
   const {
     currency,
     userData,
+    backendUrl,
+    getToken,
+    enrolledCourses,          // ← use this, NOT userData.enrolledCourses
+    fetchUserEnrolledCourses,
     calculateChapterTime,
     calculateCourseDuration,
     calculateRating,
     calculateNoOfLectures
   } = useContext(AppContext);
 
-  const fetchCourseData = () => {
-    const course = dummyCourses.find(course => course._id === id);
 
-    if (course) {
-      const resolvedCourse = {
-        ...course,
-        educator: typeof course.educator === 'string'
-          ? dummyEducatorData
-          : course.educator
-      };
+  //Youtube link helper function
+  const getYouTubeId = (url) => {
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
+  return match ? match[1] : url.split('/').pop();
+};
 
-      setCourseData(resolvedCourse);
+  // ─── Fetch single course ───────────────────────────────────────────────────
+  const fetchCourseData = async () => {
+  try {
+    const { data } = await axios.get(`${backendUrl}/api/course/${id}`);
+    console.log('Response:', data);
+
+    if (data.success) {
+      setCourseData(data.courseData);
     } else {
-      toast.error("Course not found");
+      toast.error(data.message || 'Course not found');
     }
-  };
+  } catch (error) {
+    toast.error(error.response?.data?.message || 'Failed to load course');
+    console.error('fetchCourseData error:', error);
+  }
+};
 
   const toggleSection = (index) => {
-    setOpenSections(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
+    setOpenSections(prev => ({ ...prev, [index]: !prev[index] }));
   };
 
-  const enrollCourse = () => {
-    if (!userData) {
-      return toast.warn("Login to enroll");
+  // ─── Enroll using Clerk token ──────────────────────────────────────────────
+  const enrollCourse = async () => {
+  if (!userData) return toast.warn('Login to enroll');
+  if (isAlreadyEnrolled) return toast.warn('Already enrolled');
+
+  try {
+    const token = await getToken();
+
+    const { data } = await axios.post(
+      `${backendUrl}/api/user/purchase`,
+      { courseId: courseData._id },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    if (data.success) {
+      window.location.replace(data.session_url); // ← redirect to Stripe
+    } else {
+      toast.error(data.message || 'Enrollment failed');
     }
+  } catch (error) {
+    toast.error(error.response?.data?.message || 'Enrollment failed');
+    console.error('enrollCourse error:', error);
+  }
+};
 
-    if (isAlreadyEnrolled) {
-      return toast.warn("Already enrolled");
-    }
-
-    setIsAlreadyEnrolled(true);
-    toast.success("Enrolled successfully!");
-  };
-
+  // ─── Effects ───────────────────────────────────────────────────────────────
   useEffect(() => {
     fetchCourseData();
-  }, []);
+  }, [id]);
 
+  // ─── Check enrollment against enrolledCourses from context ────────────────
   useEffect(() => {
-    if (userData && courseData) {
+    if (enrolledCourses.length > 0 && courseData) {
       setIsAlreadyEnrolled(
-        userData.enrolledCourses.includes(courseData._id)
+        enrolledCourses.some(course => course._id === courseData._id)
       );
     }
-  }, [userData, courseData]);
+  }, [enrolledCourses, courseData]);
 
   return courseData ? (
     <>
@@ -162,7 +184,7 @@ const CourseDetails = () => {
                               <div className="flex items-center gap-4 text-xs text-slate-500">
                                 {lecture.isPreviewFree && (
                                   <button
-                                    onClick={() => setPlayerData({ videoId: lecture.lectureUrl.split('/').pop() })}
+                                    onClick={() => setPlayerData({ videoId: getYouTubeId(lecture.lectureUrl) })}
                                     className="px-3 py-1 rounded-full border border-sky-100 text-sky-600 hover:bg-sky-50 transition"
                                   >
                                     Preview
@@ -247,7 +269,7 @@ const CourseDetails = () => {
 
                     <button
                       onClick={enrollCourse}
-                      className={`mt-6 w-full py-3 rounded-lg font-semibold transition ${isAlreadyEnrolled ? 'bg-gray-200 text-gray-600 cursor-not-allowed' : 'bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-700 hover:to-sky-600 text-white shadow-md'}`}
+                      className={`mt-6 w-full py-3 rounded-lg font-semibold transition ${isAlreadyEnrolled ? 'bg-gray-200 text-gray-600 cursor-not-allowed' : 'bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-700 hover:to-sky-600 text-white shadow-md cursor-pointer'}`}
                     >
                       {isAlreadyEnrolled ? 'Already Enrolled' : 'Enroll Now'}
                     </button>
