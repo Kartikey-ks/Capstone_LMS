@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { assets, dummyDashboardData } from '../../assets/assets/assets'
+import { assets } from '../../assets/assets/assets'
 import { AppContext } from '../../context/AppContext';
-// import axios from 'axios';
-// import { toast } from 'react-toastify';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import Loading from '../../components/student/Loading';
 
 const Dashboard = () => {
@@ -11,31 +11,30 @@ const Dashboard = () => {
 
   const [dashboardData, setDashboardData] = useState(null)
 
-  // const fetchDashboardData = async () => {
-  //   try {
+  const fetchDashboardData = async () => {
+    try {
 
-  //     const token = await getToken()
+      const token = await getToken()
 
-  //     const { data } = await axios.get(backendUrl + '/api/educator/dashboard',
-  //       { headers: { Authorization: `Bearer ${token}` } }
-  //     )
+      const { data } = await axios.get(backendUrl + '/api/educator/dashboard',
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
 
-  //     if (data.success) {
-  //       setDashboardData(dummyDashboardData)
-  //     } else {
-  //       toast.error(data.message)
-  //     }
+      if (data.success) {
+        setDashboardData(data.dashboardData)
+      } else {
+        toast.error(data.message)
+      }
 
-  //   } catch (error) {
-  //     toast.error(error.message)
-  //   }
-  // }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
 
   useEffect(() => {
 
     if (isEducator) {
-      // fetchDashboardData()
-      setDashboardData(dummyDashboardData)
+      fetchDashboardData()
     }
 
   }, [isEducator])
@@ -91,7 +90,7 @@ const Dashboard = () => {
       <div className='space-y-5'>
         <div className='flex flex-wrap gap-5 items-center'>
           <div className='flex items-center gap-3 shadow-card border border-blue-500 p-4 w-56 rounded-md'>
-            <img className='h-9' src={assets.user_icon} alt="user_icon" />
+            <img src={assets.user_icon} alt="patients_icon" className='h-9'/>
             <div>
               <p className='text-2xl font-medium text-gray-600'>{dashboardData.enrolledStudentsData.length}</p>
               <p className='text-base text-gray-500'>Total Enrolments</p>
